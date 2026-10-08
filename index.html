@@ -1,0 +1,1676 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Absensi Karyawan Kwarda Banten</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    :root {
+      --brown-dark: #4a3024;
+      --brown: #6b4634;
+      --brown-light: #8a6049;
+      --cream: #f7f1e8;
+      --cream-light: #fcfaf6;
+      --cream-dark: #eee4d6;
+      --text: #34251e;
+      --muted: #806f63;
+      --border: #e2d5c6;
+      --success: #66734a;
+      --warning: #9a673d;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+      color: var(--text);
+
+      background:
+        radial-gradient(
+          circle at 10% 0%,
+          rgba(138, 96, 73, .10),
+          transparent 32%
+        ),
+        radial-gradient(
+          circle at 100% 25%,
+          rgba(107, 70, 52, .07),
+          transparent 30%
+        ),
+        var(--cream);
+
+      padding: 22px 14px 40px;
+    }
+
+    .container {
+      max-width: 470px;
+      margin: auto;
+    }
+
+
+    /* =========================
+       HEADER
+    ========================= */
+
+    .header {
+      position: relative;
+      overflow: hidden;
+
+      padding: 30px 25px;
+
+      margin-bottom: 18px;
+
+      border-radius: 22px;
+
+      color: #fffaf3;
+
+      background:
+        linear-gradient(
+          145deg,
+          #4a3024,
+          #6b4634
+        );
+
+      box-shadow:
+        0 14px 32px rgba(74, 48, 36, .18);
+
+      animation:
+        fadeDown .7s cubic-bezier(.22,1,.36,1);
+    }
+
+    .header::before {
+      content: "";
+
+      position: absolute;
+
+      width: 170px;
+      height: 170px;
+
+      right: -70px;
+      top: -90px;
+
+      border-radius: 50%;
+
+      border: 1px solid rgba(255,255,255,.10);
+
+      animation:
+        gentleFloat 7s ease-in-out infinite;
+    }
+
+    .header::after {
+      content: "";
+
+      position: absolute;
+
+      width: 110px;
+      height: 110px;
+
+      left: -60px;
+      bottom: -70px;
+
+      border-radius: 50%;
+
+      border: 1px solid rgba(255,255,255,.08);
+    }
+
+    .header-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .brand {
+      font-size: 12px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+
+      opacity: .75;
+
+      margin-bottom: 10px;
+    }
+
+    .header h2 {
+      margin: 0 0 8px;
+
+      font-family: Georgia, serif;
+
+      font-size: 27px;
+      font-weight: 500;
+
+      letter-spacing: -.3px;
+    }
+
+    .header p {
+      margin: 0;
+
+      font-size: 14px;
+
+      line-height: 1.6;
+
+      opacity: .82;
+    }
+
+
+    /* =========================
+       CARD
+    ========================= */
+
+    .card {
+      background:
+        rgba(252, 250, 246, .94);
+
+      border:
+        1px solid rgba(226, 213, 198, .9);
+
+      border-radius: 19px;
+
+      padding: 20px;
+
+      margin-bottom: 15px;
+
+      box-shadow:
+        0 7px 22px rgba(74, 48, 36, .055);
+
+      animation:
+        fadeUp .7s cubic-bezier(.22,1,.36,1) both;
+
+      transition:
+        transform .35s ease,
+        box-shadow .35s ease;
+    }
+
+    .card:nth-child(2) {
+      animation-delay: .08s;
+    }
+
+    .card:nth-child(3) {
+      animation-delay: .16s;
+    }
+
+    .card:nth-child(4) {
+      animation-delay: .24s;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+
+      box-shadow:
+        0 12px 28px rgba(74, 48, 36, .08);
+    }
+
+
+    /* =========================
+       STEP TITLE
+    ========================= */
+
+    .step-title {
+      display: flex;
+
+      align-items: center;
+
+      gap: 11px;
+
+      margin-top: 0;
+      margin-bottom: 18px;
+
+      font-family: Georgia, serif;
+
+      font-weight: 500;
+
+      font-size: 18px;
+    }
+
+    .step {
+      width: 31px;
+      height: 31px;
+
+      flex-shrink: 0;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 50%;
+
+      color: var(--brown-dark);
+
+      background:
+        var(--cream-dark);
+
+      border:
+        1px solid var(--border);
+
+      font-family: Arial, sans-serif;
+
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+
+    /* =========================
+       INPUT
+    ========================= */
+
+    label {
+      display: block;
+
+      color: var(--muted);
+
+      font-size: 13px;
+
+      margin-bottom: 7px;
+    }
+
+    input {
+      width: 100%;
+
+      padding: 14px 15px;
+
+      border-radius: 11px;
+
+      border:
+        1px solid var(--border);
+
+      background: #fffdf9;
+
+      color: var(--text);
+
+      font-size: 15px;
+
+      outline: none;
+
+      transition:
+        border-color .3s ease,
+        box-shadow .3s ease,
+        background .3s ease;
+    }
+
+    input::placeholder {
+      color: #aa9c90;
+    }
+
+    input:focus {
+      background: #fff;
+
+      border-color:
+        var(--brown-light);
+
+      box-shadow:
+        0 0 0 4px rgba(107,70,52,.08);
+    }
+
+
+    /* =========================
+       BUTTON
+    ========================= */
+
+    button {
+      width: 100%;
+
+      margin-top: 10px;
+
+      padding: 13px 15px;
+
+      border: none;
+
+      border-radius: 11px;
+
+      color: #fffaf4;
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--brown),
+          var(--brown-dark)
+        );
+
+      font-size: 14px;
+
+      font-weight: 600;
+
+      letter-spacing: .1px;
+
+      cursor: pointer;
+
+      box-shadow:
+        0 5px 12px rgba(74,48,36,.12);
+
+      transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        opacity .25s ease;
+    }
+
+    button:hover:not(:disabled) {
+      transform: translateY(-1px);
+
+      box-shadow:
+        0 8px 17px rgba(74,48,36,.16);
+    }
+
+    button:active:not(:disabled) {
+      transform: scale(.985);
+    }
+
+    button:disabled {
+      color: #f8f5f0;
+
+      background: #b8aea5;
+
+      box-shadow: none;
+
+      cursor: not-allowed;
+
+      opacity: .75;
+    }
+
+    .secondary {
+      color: var(--brown-dark);
+
+      background:
+        var(--cream-dark);
+
+      box-shadow: none;
+
+      border:
+        1px solid var(--border);
+    }
+
+    .secondary:hover:not(:disabled) {
+      background: #e9ddcf;
+
+      box-shadow:
+        0 5px 12px rgba(74,48,36,.08);
+    }
+
+    .success {
+      background:
+        linear-gradient(
+          135deg,
+          #78835b,
+          #5e6945
+        );
+    }
+
+    .warning {
+      background:
+        linear-gradient(
+          135deg,
+          #a8754c,
+          #865637
+        );
+    }
+
+
+    /* =========================
+       EMPLOYEE
+    ========================= */
+
+    #employee {
+      margin-top: 16px;
+
+      padding: 15px;
+
+      border-radius: 13px;
+
+      background:
+        #f5eee5;
+
+      border:
+        1px solid var(--border);
+
+      animation:
+        softAppear .5s ease;
+    }
+
+    .name {
+      margin: 4px 0 7px;
+
+      color: var(--brown-dark);
+
+      font-family: Georgia, serif;
+
+      font-size: 21px;
+      font-weight: 500;
+    }
+
+
+    /* =========================
+       CAMERA
+    ========================= */
+
+    video {
+      width: 100%;
+
+      display: block;
+
+      margin-top: 4px;
+
+      border-radius: 14px;
+
+      background: #2b211c;
+
+      transform: scaleX(-1);
+
+      box-shadow:
+        0 7px 18px rgba(43,33,28,.12);
+    }
+
+    #selfiePreview {
+      width: 100%;
+
+      display: block;
+
+      margin-top: 12px;
+
+      border-radius: 14px;
+
+      box-shadow:
+        0 7px 18px rgba(74,48,36,.10);
+
+      animation:
+        photoReveal .6s cubic-bezier(.22,1,.36,1);
+    }
+
+
+    /* =========================
+       STATUS
+    ========================= */
+
+    .status-box {
+      margin-top: 13px;
+
+      padding: 11px 13px;
+
+      border-radius: 11px;
+
+      background:
+        #f7f2eb;
+
+      border:
+        1px solid #e9dfd4;
+    }
+
+    #status,
+    #gpsStatus,
+    #faceStatus {
+      margin: 0;
+
+      color: var(--muted);
+
+      font-size: 13px;
+
+      line-height: 1.55;
+
+      overflow-wrap: anywhere;
+    }
+
+    .muted {
+      color: var(--muted);
+
+      font-size: 12px;
+
+      line-height: 1.55;
+    }
+
+
+    /* =========================
+       GPS LOADING
+    ========================= */
+
+    .loading {
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 5px;
+    }
+
+    .dot {
+      width: 5px;
+      height: 5px;
+
+      border-radius: 50%;
+
+      background:
+        var(--brown-light);
+
+      animation:
+        loading 1.3s ease-in-out infinite;
+    }
+
+    .dot:nth-child(2) {
+      animation-delay: .16s;
+    }
+
+    .dot:nth-child(3) {
+      animation-delay: .32s;
+    }
+
+
+    /* =========================
+       HIDDEN
+    ========================= */
+
+    .hidden {
+      display: none !important;
+    }
+
+
+    /* =========================
+       ANIMATIONS
+    ========================= */
+
+    @keyframes fadeDown {
+      from {
+        opacity: 0;
+        transform: translateY(-14px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(15px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes softAppear {
+      from {
+        opacity: 0;
+        transform: translateY(7px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes photoReveal {
+      from {
+        opacity: 0;
+        transform: scale(.97);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes gentleFloat {
+      0%, 100% {
+        transform: translate(0, 0);
+      }
+
+      50% {
+        transform: translate(-8px, 10px);
+      }
+    }
+
+    @keyframes loading {
+      0%, 60%, 100% {
+        opacity: .3;
+        transform: translateY(0);
+      }
+
+      30% {
+        opacity: 1;
+        transform: translateY(-3px);
+      }
+    }
+
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 360px) {
+
+      body {
+        padding:
+          14px 10px 30px;
+      }
+
+      .header {
+        padding:
+          25px 20px;
+      }
+
+      .card {
+        padding:
+          17px;
+      }
+
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+<div class="container">
+
+
+  <!-- HEADER -->
+
+  <div class="header">
+
+    <div class="header-content">
+
+      <div class="brand">
+        Kwarda Banten
+      </div>
+
+      <h2>
+        Absensi Karyawan
+      </h2>
+
+      <p>
+        Silakan lakukan absensi harian
+        dengan tertib dan tepat waktu.
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <!-- IDENTITAS -->
+
+  <div class="card">
+
+    <h3 class="step-title">
+
+      <span class="step">
+        1
+      </span>
+
+      Identitas Karyawan
+
+    </h3>
+
+
+    <label for="nik">
+      Nomor Induk Karyawan (NIK)
+    </label>
+
+
+    <input
+      id="nik"
+      type="text"
+      placeholder="Masukkan NIK"
+      autocomplete="off"
+    >
+
+
+    <button
+      id="checkBtn"
+      onclick="checkEmployee()"
+    >
+      Cek Karyawan
+    </button>
+
+
+    <div
+      id="employee"
+      class="hidden"
+    >
+
+      <p
+        class="name"
+        id="empName"
+      ></p>
+
+      <p
+        id="empDivision"
+      ></p>
+
+      <p
+        class="muted"
+        id="empStatus"
+      ></p>
+
+    </div>
+
+  </div>
+
+
+  <!-- SELFIE -->
+
+  <div class="card">
+
+    <h3 class="step-title">
+
+      <span class="step">
+        2
+      </span>
+
+      Ambil Selfie
+
+    </h3>
+
+
+    <video
+      id="cam"
+      autoplay
+      muted
+      playsinline
+    ></video>
+
+
+    <button
+      id="startBtn"
+      onclick="startCamera()"
+    >
+      Aktifkan Kamera
+    </button>
+
+
+    <button
+      class="success"
+      id="captureBtn"
+      onclick="captureSelfie()"
+      disabled
+    >
+      Ambil Selfie
+    </button>
+
+
+    <button
+      class="secondary"
+      onclick="stopCamera()"
+    >
+      Matikan Kamera
+    </button>
+
+
+    <div class="status-box">
+
+      <p id="faceStatus">
+        Kamera belum aktif.
+      </p>
+
+    </div>
+
+
+    <img
+      id="selfiePreview"
+      class="hidden"
+      alt="Preview selfie"
+    >
+
+
+    <button
+      id="retakeBtn"
+      class="secondary hidden"
+      onclick="retakeSelfie()"
+    >
+      Ambil Ulang Selfie
+    </button>
+
+
+    <canvas
+      id="photoCanvas"
+      class="hidden"
+    ></canvas>
+
+
+    <p class="muted">
+      Selfie digunakan sebagai bukti foto absensi.
+      Tidak ada verifikasi atau pengenalan wajah.
+    </p>
+
+  </div>
+
+
+  <!-- GPS -->
+
+  <div class="card">
+
+    <h3 class="step-title">
+
+      <span class="step">
+        3
+      </span>
+
+      Lokasi
+
+    </h3>
+
+
+    <button
+      class="secondary"
+      onclick="getGPS()"
+    >
+      📍&nbsp; Ambil Lokasi GPS
+    </button>
+
+
+    <div class="status-box">
+
+      <p id="gpsStatus">
+        Lokasi belum diambil.
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <!-- ABSENSI -->
+
+  <div class="card">
+
+    <h3 class="step-title">
+
+      <span class="step">
+        4
+      </span>
+
+      Kirim Absensi
+
+    </h3>
+
+
+    <button
+      class="success"
+      id="inBtn"
+      disabled
+      onclick="submitAttendance('masuk')"
+    >
+      Absen Masuk
+    </button>
+
+
+    <button
+      class="warning"
+      id="outBtn"
+      disabled
+      onclick="submitAttendance('pulang')"
+    >
+      Absen Pulang
+    </button>
+
+
+    <div class="status-box">
+
+      <p id="status">
+        Masukkan NIK untuk memulai.
+      </p>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<script>
+
+  // =====================================================
+  // APPS SCRIPT
+  // =====================================================
+
+  const API_URL =
+    "https://script.google.com/macros/s/AKfycbxqbQvtWoEasmnb_yD6TluN2YoRLe_UArsH3gAe5wEQ4JDqaawwJ01kxtYdcikgKx55/exec";
+
+
+  // =====================================================
+  // VARIABLE
+  // =====================================================
+
+  let employee = null;
+
+  let stream = null;
+
+  let locationData = null;
+
+  let photoData = null;
+
+
+  // =====================================================
+  // STATUS
+  // =====================================================
+
+  function setStatus(message) {
+
+    document
+      .getElementById("status")
+      .textContent = message;
+
+  }
+
+
+  // =====================================================
+  // CEK KARYAWAN
+  // =====================================================
+
+  async function checkEmployee() {
+
+    const nik =
+      document
+        .getElementById("nik")
+        .value
+        .trim();
+
+    const btn =
+      document
+        .getElementById("checkBtn");
+
+
+    if (!nik) {
+
+      setStatus(
+        "Masukkan NIK terlebih dahulu."
+      );
+
+      return;
+    }
+
+
+    if (
+      API_URL.includes("TEMPEL_URL")
+    ) {
+
+      setStatus(
+        "URL Apps Script belum dipasang."
+      );
+
+      return;
+    }
+
+
+    btn.disabled = true;
+
+    employee = null;
+
+    photoData = null;
+
+
+    document
+      .getElementById("employee")
+      .classList
+      .add("hidden");
+
+
+    document
+      .getElementById("selfiePreview")
+      .classList
+      .add("hidden");
+
+
+    document
+      .getElementById("retakeBtn")
+      .classList
+      .add("hidden");
+
+
+    updateButtons();
+
+
+    setStatus(
+      "Memeriksa data karyawan..."
+    );
+
+
+    try {
+
+      const url =
+        API_URL +
+        "?action=getEmployee&nik=" +
+        encodeURIComponent(nik);
+
+
+      const response =
+        await fetch(url);
+
+
+      if (!response.ok) {
+
+        throw new Error(
+          "HTTP " +
+          response.status
+        );
+
+      }
+
+
+      const result =
+        await response.json();
+
+
+      if (
+        !result.success ||
+        !result.data
+      ) {
+
+        setStatus(
+          result.message ||
+          "Data karyawan tidak ditemukan."
+        );
+
+        return;
+      }
+
+
+      employee =
+        result.data;
+
+
+      document
+        .getElementById("empName")
+        .textContent =
+        employee.nama || "";
+
+
+      document
+        .getElementById("empDivision")
+        .textContent =
+        "Divisi: " +
+        (employee.divisi || "-");
+
+
+      document
+        .getElementById("empStatus")
+        .textContent =
+        "Status absensi: " +
+        (result.status || "-");
+
+
+      document
+        .getElementById("employee")
+        .classList
+        .remove("hidden");
+
+
+      setStatus(
+        "Data karyawan ditemukan."
+      );
+
+
+    } catch (error) {
+
+      setStatus(
+        "Gagal mengakses API: " +
+        error.message
+      );
+
+
+    } finally {
+
+      btn.disabled = false;
+
+      updateButtons();
+
+    }
+
+  }
+
+
+  // =====================================================
+  // KAMERA
+  // =====================================================
+
+  async function startCamera() {
+
+    try {
+
+      if (
+        !navigator.mediaDevices ||
+        !navigator.mediaDevices.getUserMedia
+      ) {
+
+        throw new Error(
+          "Browser tidak mendukung akses kamera."
+        );
+
+      }
+
+
+      stopCamera();
+
+
+      stream =
+        await navigator
+          .mediaDevices
+          .getUserMedia({
+
+            video: {
+              facingMode: "user"
+            },
+
+            audio: false
+
+          });
+
+
+      document
+        .getElementById("cam")
+        .srcObject =
+        stream;
+
+
+      document
+        .getElementById("faceStatus")
+        .textContent =
+        "Kamera aktif. Silakan ambil selfie.";
+
+
+      document
+        .getElementById("captureBtn")
+        .disabled =
+        false;
+
+
+      updateButtons();
+
+
+    } catch (error) {
+
+      document
+        .getElementById("faceStatus")
+        .textContent =
+        "Kamera gagal: " +
+        error.name +
+        " — " +
+        error.message;
+
+    }
+
+  }
+
+
+  // =====================================================
+  // STOP KAMERA
+  // =====================================================
+
+  function stopCamera() {
+
+    if (stream) {
+
+      stream
+        .getTracks()
+        .forEach(
+          track => track.stop()
+        );
+
+    }
+
+
+    stream = null;
+
+
+    document
+      .getElementById("cam")
+      .srcObject = null;
+
+
+    document
+      .getElementById("captureBtn")
+      .disabled = true;
+
+
+    updateButtons();
+
+  }
+
+
+  // =====================================================
+  // AMBIL SELFIE
+  // =====================================================
+
+  function captureSelfie() {
+
+    if (!stream) {
+
+      setStatus(
+        "Aktifkan kamera terlebih dahulu."
+      );
+
+      return;
+    }
+
+
+    const video =
+      document
+        .getElementById("cam");
+
+    const canvas =
+      document
+        .getElementById("photoCanvas");
+
+    const preview =
+      document
+        .getElementById("selfiePreview");
+
+
+    if (
+      video.videoWidth === 0 ||
+      video.videoHeight === 0
+    ) {
+
+      setStatus(
+        "Kamera belum siap. Tunggu sebentar."
+      );
+
+      return;
+    }
+
+
+    canvas.width =
+      video.videoWidth;
+
+    canvas.height =
+      video.videoHeight;
+
+
+    const ctx =
+      canvas.getContext("2d");
+
+
+    ctx.save();
+
+    ctx.translate(
+      canvas.width,
+      0
+    );
+
+    ctx.scale(-1, 1);
+
+
+    ctx.drawImage(
+      video,
+      0,
+      0,
+      canvas.width,
+      canvas.height
+    );
+
+
+    ctx.restore();
+
+
+    photoData =
+      canvas.toDataURL(
+        "image/jpeg",
+        .80
+      );
+
+
+    preview.src =
+      photoData;
+
+
+    preview
+      .classList
+      .remove("hidden");
+
+
+    document
+      .getElementById("retakeBtn")
+      .classList
+      .remove("hidden");
+
+
+    document
+      .getElementById("faceStatus")
+      .textContent =
+      "Selfie berhasil diambil.";
+
+
+    setStatus(
+      "Selfie berhasil. Silakan ambil lokasi GPS."
+    );
+
+
+    updateButtons();
+
+  }
+
+
+  // =====================================================
+  // AMBIL ULANG
+  // =====================================================
+
+  function retakeSelfie() {
+
+    photoData = null;
+
+
+    document
+      .getElementById("selfiePreview")
+      .classList
+      .add("hidden");
+
+
+    document
+      .getElementById("retakeBtn")
+      .classList
+      .add("hidden");
+
+
+    document
+      .getElementById("faceStatus")
+      .textContent =
+      "Silakan ambil selfie lagi.";
+
+
+    updateButtons();
+
+  }
+
+
+  // =====================================================
+  // GPS
+  // =====================================================
+
+  function getGPS() {
+
+    const label =
+      document
+        .getElementById("gpsStatus");
+
+
+    if (!navigator.geolocation) {
+
+      label.textContent =
+        "Browser tidak mendukung GPS.";
+
+      return;
+    }
+
+
+    label.innerHTML =
+      '<span class="loading">' +
+      'Mengambil lokasi' +
+      '<span class="dot"></span>' +
+      '<span class="dot"></span>' +
+      '<span class="dot"></span>' +
+      '</span>';
+
+
+    navigator
+      .geolocation
+      .getCurrentPosition(
+
+        position => {
+
+          locationData = {
+
+            lat:
+              position.coords.latitude,
+
+            lng:
+              position.coords.longitude
+
+          };
+
+
+          label.textContent =
+            "GPS berhasil: " +
+            locationData.lat.toFixed(6) +
+            ", " +
+            locationData.lng.toFixed(6);
+
+
+          updateButtons();
+
+        },
+
+
+        error => {
+
+          label.textContent =
+            "GPS gagal: " +
+            error.message;
+
+
+          locationData = null;
+
+
+          updateButtons();
+
+        },
+
+
+        {
+
+          enableHighAccuracy: true,
+
+          timeout: 15000,
+
+          maximumAge: 0
+
+        }
+
+      );
+
+  }
+
+
+  // =====================================================
+  // BUTTON STATE
+  // =====================================================
+
+  function updateButtons() {
+
+    const ready =
+      !!employee &&
+      !!stream &&
+      !!photoData &&
+      !!locationData;
+
+
+    document
+      .getElementById("inBtn")
+      .disabled =
+      !ready;
+
+
+    document
+      .getElementById("outBtn")
+      .disabled =
+      !ready;
+
+  }
+
+
+  // =====================================================
+  // SUBMIT
+  // =====================================================
+
+  async function submitAttendance(type) {
+
+    if (
+      !employee ||
+      !stream ||
+      !photoData ||
+      !locationData
+    ) {
+
+      setStatus(
+        "Lengkapi NIK, kamera, selfie, dan GPS terlebih dahulu."
+      );
+
+      return;
+    }
+
+
+    const inBtn =
+      document
+        .getElementById("inBtn");
+
+    const outBtn =
+      document
+        .getElementById("outBtn");
+
+
+    inBtn.disabled = true;
+
+    outBtn.disabled = true;
+
+
+    setStatus(
+      "Mengirim absensi..."
+    );
+
+
+    const backendType =
+      type === "masuk"
+        ? "belum_masuk"
+        : "sudah_masuk";
+
+
+    const data = {
+
+      action: "submit",
+
+      id: employee.id,
+
+      type: backendType,
+
+      foto: photoData,
+
+      lat: locationData.lat,
+
+      lng: locationData.lng
+
+    };
+
+
+    try {
+
+      const response =
+        await fetch(
+
+          API_URL,
+
+          {
+
+            method: "POST",
+
+            headers: {
+
+              "Content-Type":
+                "text/plain;charset=utf-8"
+
+            },
+
+            body:
+              JSON.stringify(data)
+
+          }
+
+        );
+
+
+      if (!response.ok) {
+
+        throw new Error(
+          "HTTP " +
+          response.status
+        );
+
+      }
+
+
+      const result =
+        await response.json();
+
+
+      if (!result.success) {
+
+        throw new Error(
+          result.message ||
+          "Absensi gagal disimpan."
+        );
+
+      }
+
+
+      setStatus(
+
+        type === "masuk"
+
+          ? "Absen masuk berhasil disimpan."
+
+          : "Absen pulang berhasil disimpan."
+
+      );
+
+
+      document
+        .getElementById("empStatus")
+        .textContent =
+
+        type === "masuk"
+
+          ? "Status absensi: Sudah Masuk"
+
+          : "Status absensi: Sudah Pulang";
+
+
+      photoData = null;
+
+
+      document
+        .getElementById("selfiePreview")
+        .classList
+        .add("hidden");
+
+
+      document
+        .getElementById("retakeBtn")
+        .classList
+        .add("hidden");
+
+
+      updateButtons();
+
+
+    } catch (error) {
+
+      setStatus(
+        "Absensi gagal: " +
+        error.message
+      );
+
+
+      updateButtons();
+
+    }
+
+  }
+
+</script>
+
+</body>
+</html>
