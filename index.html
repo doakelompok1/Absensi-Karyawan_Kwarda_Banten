@@ -589,7 +589,34 @@
     </div>
 
     <label for="nik">Nomor Induk Karyawan (NIK)</label>
-    <input id="nik" type="text" placeholder="Masukkan NIK kamu" autocomplete="off">
+
+<div class="nik-input-wrap">
+  <input
+    id="nik"
+    type="password"
+    placeholder="Masukkan NIK kamu"
+    autocomplete="off"
+    inputmode="numeric"
+  >
+
+  <button
+    type="button"
+    id="toggleNik"
+    class="nik-toggle"
+    onclick="toggleNikVisibility()"
+    aria-label="Tampilkan NIK"
+    aria-pressed="false"
+  >
+    <svg id="nikEye" viewBox="0 0 24 24"
+      width="21" height="21" fill="none"
+      stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round"
+      aria-hidden="true">
+      <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/>
+      <circle cx="12" cy="12" r="3"/>
+    </svg>
+  </button>
+</div>
 
     <button id="checkBtn" onclick="checkEmployee()">⚜️ &nbsp; Cek Karyawan</button>
 
