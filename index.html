@@ -46,7 +46,48 @@
     button, input {
       font: inherit;
     }
+.nik-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
 
+.nik-input-wrap input {
+  padding-right: 52px;
+}
+
+.nik-toggle {
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 42px;
+  height: 42px;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  background: transparent;
+  color: var(--brown);
+  border: none;
+  border-radius: 10px;
+  box-shadow: none;
+}
+
+.nik-toggle:hover:not(:disabled) {
+  transform: translateY(-50%);
+  background: #f2e6d6;
+  box-shadow: none;
+  filter: none;
+}
+
+.nik-toggle::after {
+  display: none;
+}
+
+.nik-toggle:active:not(:disabled) {
+  transform: translateY(-50%);
+}
     button {
       -webkit-tap-highlight-color: transparent;
     }
@@ -734,7 +775,24 @@
       updateProgress(1);
     }
   }
+function toggleNikVisibility() {
+  const input = document.getElementById("nik");
+  const button = document.getElementById("toggleNik");
+  const eye = document.getElementById("nikEye");
 
+  const show = input.type === "password";
+  input.type = show ? "text" : "password";
+
+  button.setAttribute(
+    "aria-label",
+    show ? "Sembunyikan NIK" : "Tampilkan NIK"
+  );
+  button.setAttribute("aria-pressed", String(show));
+
+  eye.innerHTML = show
+    ? '<path d="M3 3l18 18"/><path d="M10.6 10.6a2 2 0 0 0 2.8 2.8"/><path d="M9.9 5.2A11 11 0 0 1 12 5c6.5 0 10 7 10 7a15 15 0 0 1-4 4.8"/><path d="M6.2 6.2C3.5 8 2 12 2 12s3.5 7 10 7c1 0 2-.2 2.9-.5"/>'
+    : '<path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/>';
+}
   // CEK KARYAWAN
   async function checkEmployee() {
     const nik = document.getElementById("nik").value.trim();
